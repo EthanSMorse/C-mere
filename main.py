@@ -1,8 +1,4 @@
-from flask import Flask, render_template, request, redirect
-import pymysql
-import pymysql.cursors
-from flask_httpauth import HTTPBasicAuth
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
