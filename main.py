@@ -28,5 +28,21 @@ def registration ():
         cursor.execute(f"INSERT INTO `User`(`Username`, `Passwords`, `Email`) VALUES ('{username}', '{password}', '{email}')")
         cursor.close()
         conn.commit()
-
+        return redirect('/signin')
     return render_template("registration.html.jinja")
+
+@app.route('/signin',  methods=['GET', 'POST'])
+def signup ():
+    if request.method == 'POST':
+        username = request.form["username"]
+        password = request.form["password"]
+        cursor = conn.cursor()
+        cursor.execute(f"SELECT * FROM `User` WHERE `Username` = '{username}'")
+        user = cursor.fetchone()
+        cursor.close()
+        conn.commit()
+        if user["Password"] == password:
+            return redirect('/feed')
+
+
+    return render_template("signin.html.jinja")
