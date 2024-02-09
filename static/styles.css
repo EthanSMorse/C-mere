@@ -102,12 +102,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   
   /*-- end reset --*/
   body {
-    background: #76b852;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #76b852, #8DC26F);
-    background: -moz-linear-gradient(to top, #76b852, #8DC26F);
-    background: -o-linear-gradient(to top, #76b852, #8DC26F);
-    background: linear-gradient(to top, #76b852, #8DC26F);
+    background: -webkit-linear-gradient(180deg, rgb(118, 118, 118), rgb(0, 0, 0));
+    background: -moz-linear-gradient(180deg, rgb(118, 118, 118), rgb(0, 0, 0));
+    background: -o-linear-gradient(180deg, rgb(118, 118, 118), rgb(0, 0, 0));
+    background: linear-gradient(180deg, rgb(118, 118, 118), rgb(0, 0, 0));
     background-size: cover;
     background-attachment: fixed;
     font-family: 'Roboto', sans-serif;
@@ -202,9 +201,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   input[type="submit"] {
     font-size: .9em;
     color: #fff;
-    background: #76b852;
+    background: #000000;
     outline: none;
-    border: 1px solid #76b852;
+    border: 2px solid #ffffff;
     cursor: pointer;
     padding: 0.9em;
     -webkit-appearance: none;

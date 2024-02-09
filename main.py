@@ -58,7 +58,7 @@ def registration ():
         password = request.form["password"]
         email = request.form["email"]
         cursor = conn.cursor()
-        cursor.execute(f"INSERT INTO `User`(`Username`, `Passwords`, `Email`) VALUES ('{username}', '{password}', '{email}')")
+        cursor.execute(f"INSERT INTO `User`(`Username`, `Password`, `Email`) VALUES ('{username}', '{password}', '{email}')")
         cursor.close()
         conn.commit()
         return redirect('/signin')
