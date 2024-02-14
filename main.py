@@ -87,4 +87,4 @@ def signup ():
 @flask_login.login_required
 
 def post_feed():
-    return 'feed page'
+    return render_template("feed.html.jinja")
