@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, g
 import pymysql
 import pymysql.cursors
-from flask_httpauth import HTTPBasicAuth
-from werkzeug.security import generate_password_hash, check_password_hash
 import flask_login
 
 app = Flask(__name__)
@@ -97,7 +95,11 @@ def signup ():
 @app.route('/feed')
 @flask_login.login_required
 def post_feed():
-    return render_template("feed.html.jinja")
+    cursor = get_db().cursor()
+    cursor.execute("SELECT * FROM `Posts` INNER JOIN `User` ON `Posts`.user_id = `User`.ID")
+    results = cursor.fetchall()
+    cursor.close()
+    return render_template("feed.html.jinja", posts = results)
     return flask_login.current_user
 
 @app.route('/post')
