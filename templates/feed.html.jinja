@@ -36,17 +36,6 @@
 <body>
     <nav class="navbar navbar-light bg-white">
         <a href="http://127.0.0.1:5000/feed" class="navbar-brand">C'mere!</a>
-        <form class="form-inline">
-            <div class="input-group">
-                <input type="text" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
     </nav>
 
 
@@ -78,44 +67,46 @@
             <div class="col-md-6 gedf-main">
                 <div class="card gedf-card">
                     <div class="card-header">Post Here!</div>
-                    <div class="card-body">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="posts" role="tabpanel"
-                                aria-labelledby="posts-tab">
-                                <form method="POST">
+
+                    <form action="/post" method="POST">
+                        <div class="card-body">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="posts" role="tabpanel"
+                                    aria-labelledby="posts-tab">
                                     <div class="form-group">
                                         <textarea name="description" class="form-control" id="message" rows="3"
                                             placeholder="Tell us your deepest darkest secrets."></textarea>
                                     </div>
-                            </div>
-                            <div class="btn-toolbar justify-content-between">
-                                <div class="btn-group">
-                                    <button type="submit" class="btn btn-primary">Post</button>
                                 </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    {%for x in posts%}
-                    <div class="card gedf-card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="ml-2">
-                                        <div class="h5 m-0">{{x['Username']}}</div>
+                                <div class="btn-toolbar justify-content-between">
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary">Post</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{x['timestamp']}}</div>
-                            <p class="card-text">{{x['description']}}</p>
+                    </form>
+                </div>
+                {%for x in posts%}
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="ml-2">
+                                    <div class="h5 m-0">{{x['Username']}}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {%endfor%}
+                    <div class="card-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{x['timestamp']}}</div>
+                        <p class="card-text">{{x['description']}}</p>
+                    </div>
                 </div>
+                {%endfor%}
             </div>
         </div>
+    </div>
 </body>
 
 </html>

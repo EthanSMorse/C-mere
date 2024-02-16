@@ -92,7 +92,7 @@ def signup ():
 
     return render_template("signin.html.jinja")
 
-@app.route('/feed')
+@app.route('/feed', methods=['GET', 'POST'])
 @flask_login.login_required
 def post_feed():
     cursor = get_db().cursor()
@@ -102,10 +102,14 @@ def post_feed():
     return render_template("feed.html.jinja", posts = results)
     return flask_login.current_user
 
-@app.route('/post')
+@app.route('/post', methods=['GET', 'POST'])
 @flask_login.login_required
 def post():
     description = request.form['description']
     user_id = flask_login.current_user.id
     cursor = get_db().cursor()
-    cursor.execute(f"INSERT INTO `Posts` (`description`, `user id`) VALUES ('{description}', '{user_id}')")
+    cursor.execute(f"INSERT INTO `Posts` (`description`, `user_id`) VALUES ('{description}', '{user_id}')")
+    cursor.close()
+    get_db().commit
+    return redirect("/feed")
+
