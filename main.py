@@ -96,7 +96,7 @@ def signup ():
 @flask_login.login_required
 def post_feed():
     cursor = get_db().cursor()
-    cursor.execute("SELECT * FROM `Posts` INNER JOIN `User` ON `Posts`.user_id = `User`.ID")
+    cursor.execute("SELECT * FROM `Posts` INNER JOIN `User` ON `Posts`.user_id = `User`.ID ORDER BY `timestamp` DESC")
     results = cursor.fetchall()
     cursor.close()
     return render_template("feed.html.jinja", posts = results)
